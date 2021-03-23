@@ -1,0 +1,22 @@
+<div id="{{post.id}} " class=" row card m-2 p-2 ">
+    <h4>By: {{ username }}</h4>
+    <div class="p-2 text-center ">
+        <h4>{{ post.title }}</h4>
+    </div>
+    <div class="row">
+        <p (click)="showPost = !showPost" class="d-inline-block" [ngClass]="{'text-truncate': showPost}">{{ post.body }} </p>
+    </div>
+    <ng-template #comment let-modal>
+        <h3 class="text-center">Reactions on post of {{ username }}</h3>
+        <div *ngFor="let comment of getPostComments(post.id) ">
+            <div id="{{comment.id}} " class="card m-2 p-2 ">
+                <p class="fw-bold ">{{ comment.email }}</p>
+                <p class="fw-light ">{{comment.name}}</p>
+                <p>{{ comment.body }}</p>
+            </div>
+        </div>
+    </ng-template>
+    <div class="text-center ">
+        <button class="col-lg-2 center btn btn-primary " (click)="open(comment) ">Voir commentaires</button>
+    </div>
+</div>

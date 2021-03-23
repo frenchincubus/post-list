@@ -1,0 +1,10 @@
+<h2>Liste d'articles</h2>
+<div class="row">
+    <ngb-pagination class="d-flex justify-content-center" [(page)]=" page " [pageSize]="pageSize " [collectionSize]="posts.length "></ngb-pagination>
+</div>
+<div class="container " *ngFor="let post of posts | slice: (page-1)* pageSize : page * pageSize ">
+    <app-single-post [post]="post" [comments]="getPostComments(post.id)" [username]="getUsernameById(post.userId)"></app-single-post>
+</div>
+<div class="row ">
+    <ngb-pagination class="d-flex justify-content-center" [(page)]="page " [pageSize]="pageSize " [collectionSize]="posts.length "></ngb-pagination>
+</div>
